@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://pavanch19.github.io/interview_preparation/pavan",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

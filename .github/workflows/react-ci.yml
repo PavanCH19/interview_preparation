@@ -3,7 +3,7 @@ name: Deploy React App from Subfolder
 on:
   push:
     branches:
-      - main   # default branch
+      - main
 
 jobs:
   build-and-deploy:
@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./pavan   # <-- point to your React project folder
+        working-directory: ./pavan   # React project folder
 
     steps:
       - name: Checkout repository
@@ -33,3 +33,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./pavan/build
+          clean: true   # remove old files like README.md
