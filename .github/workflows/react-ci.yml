@@ -20,17 +20,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd interview_preparation/pavan
+          cd pavan
           npm install
 
       - name: Build project
         run: |
-          cd interview_preparation/pavan
+          cd pavan
           npm run build
 
       - name: Deploy to GitHub Pages
         run: |
-          cd interview_preparation/pavan
+          cd pavan
           npx gh-pages -d dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
