@@ -1,4 +1,4 @@
-name: Deploy React App from Subfolder
+name: Deploy React App
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /pavan   # React folder
+        working-directory: ./pavan   # relative to repo root
 
     steps:
       - name: Checkout repository
@@ -29,8 +29,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3.9.3  # Updated to latest stable version
+        uses: peaceiris/actions-gh-pages@v3.9.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pavan/dist
+          publish_dir: ./pavan/dist   # Vite build output
           clean: true
