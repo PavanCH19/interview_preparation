@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./pavan   # React project folder
+        working-directory: ./pavan   # React folder
 
     steps:
       - name: Checkout repository
@@ -29,8 +29,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v5  # <-- changed from v6 to v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pavan/build
-          clean: true   # remove old files like README.md
+          publish_dir: ./pavan/dist
+          clean: true
