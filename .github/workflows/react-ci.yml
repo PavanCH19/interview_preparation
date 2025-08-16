@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./pavan   # relative to repo root
+        working-directory: pavan   # relative to repo root
 
     steps:
       - name: Checkout repository
