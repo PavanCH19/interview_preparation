@@ -1,13 +1,17 @@
-name: Deploy React App
+name: Deploy React App from Subfolder
 
 on:
   push:
     branches:
-      - main  # change if your default branch is different
+      - main   # default branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./pavan   # <-- point to your React project folder
 
     steps:
       - name: Checkout repository
@@ -16,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # choose Node.js version
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -28,4 +32,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./pavan/build
