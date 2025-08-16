@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./pavan   # React folder
+        working-directory: ./interview_preparation/pavan   # React folder
 
     steps:
       - name: Checkout repository
