@@ -9,10 +9,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: pavan   # relative to repo root
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,14 +19,18 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd interview_preparation/pavan
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd interview_preparation/pavan
+          npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3.9.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pavan/dist   # Vite build output
-          clean: true
+        run: |
+          cd interview_preparation/pavan
+          npx gh-pages -d dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
